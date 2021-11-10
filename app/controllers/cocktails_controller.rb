@@ -8,8 +8,8 @@ class CocktailsController < ApplicationController
     render 'show_search_results'
   end
 
-  def search_by_liquor
-    @cocktails = CocktailService.get_cocktail_by_liqour(params["liquor"])
+  def search_by_ingredient
+    @cocktails = CocktailService.get_cocktail_by_ingredient(params["ingredient"])
     render 'show_search_results'
   end
 
