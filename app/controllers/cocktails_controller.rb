@@ -1,16 +1,24 @@
 class CocktailsController < ApplicationController
-  def index
+  def search
     @cocktail = CocktailService.get_random_cocktail
   end
 
   def search_by_name
-    @cocktails = CocktailService.get_cocktail_by_name(params["name"])
-    render 'show_search_results'
+    if !params["name"].empty? 
+      @cocktails = CocktailService.get_cocktail_by_name(params["name"])
+      render 'show_search_results'
+    else 
+      redirect_to '/cocktails/search'
+    end
   end
 
   def search_by_ingredient
+   if !params["ingredient"].empty? 
     @cocktails = CocktailService.get_cocktail_by_ingredient(params["ingredient"])
     render 'show_search_results'
+   else
+    redirect_to '/cocktails/search'
+   end
   end
 
   def show

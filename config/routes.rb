@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: "home#index"
   resources :cocktails  do
     collection do
-      get 'search_by_ingredient', 'search_by_name'
+      get 'search', 'search_by_ingredient', 'search_by_name'
     end
   end
   
