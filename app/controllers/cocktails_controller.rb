@@ -3,7 +3,7 @@ class CocktailsController < ApplicationController
     @cocktail = CocktailService.get_random_cocktail
   end
 
-    def search_by_name
+  def search_by_name
     @cocktails = CocktailService.get_cocktail_by_name(params["name"])
     render 'show_search_results'
   end
@@ -13,11 +13,8 @@ class CocktailsController < ApplicationController
     render 'show_search_results'
   end
 
-
   def show
     @cocktail = CocktailService.get_cocktail_by_id(params[:id])
-        render 'show'
+    render 'show'
   end
-
-
 end
