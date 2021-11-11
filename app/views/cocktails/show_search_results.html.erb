@@ -19,6 +19,14 @@
                 <button type="button" class="btn">
                   <i class="bi bi-star"></i>
                 </button>
+                 <div id="favorite_form">
+                  <% if current_user.favorited?(cocktail["idDrink"]) %>
+                    <%= render 'unfavorite', cocktail: cocktail %>
+                  <% else %>
+                    <%= render 'favorite', cocktail: cocktail %>
+                  <% end %>
+                </div>
+
               </div>
             </div>
           </div>

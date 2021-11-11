@@ -1,4 +1,4 @@
-$(document).ready(function () {
+document.addEventListener("turbolinks:load", function () {
   $("#search_by_name_btn").on("click", function (e) {
     $("#search_form").attr("action", "/cocktails/search_by_name");
     $("#search_by_name_btn")
@@ -7,6 +7,7 @@ $(document).ready(function () {
     $("#search_by_ingredient_btn")
       .removeClass("btn-primary")
       .addClass("btn-outline-primary");
+    $("#search_input").attr("placeholder", "Margarita");
     $("#search_input").attr("name", "name");
   });
 

@@ -6,8 +6,8 @@
 import Rails from "@rails/ujs";
 import Turbolinks from "turbolinks";
 import * as ActiveStorage from "@rails/activestorage";
-import "channels";
 import "./home_search";
+import "channels";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 Rails.start();

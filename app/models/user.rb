@@ -14,19 +14,24 @@ class User < ApplicationRecord
     where('created_at >= ?', Time.current.beginning_of_day)
   end
 
- def like_cocktail(cocktail)
-  favorited_cocktails << cocktail
+  # # favorite
+  def add_favorite(cocktail)
+    # favorites.create(cocktail_id ....)
+    self.favorites.create(user_id: self.id, cocktail_id: cocktail.id, api_id: cocktail.api_id)
   end
 
-  def unlike_cocktail(cocktail)
-    favorited_cocktails.delete(cocktail)
-  end
+  # # remove_favorite
+  # def delete_favorite(favorite)
+  #   self.favorites.delete(favorite)
+  # end
 
 # Returns true if the current user is following the other user.
-  def favorited?(cocktail)
-    favorited_cocktails.include?(cocktail)
+  def favorited?(cocktail_api_id)
+    favorited_cocktails.find_by(api_id: cocktail_api_id).present?
   end
-
-
-
 end
+
+# The form is submitted to a controller action probably favorites create
+# You have the cocktail api_id and user_id in the hideen fields...access through params in controller
+# Use the api_id to find or create the record in Cocktails. First it will try to find the Cocktail record, if it doesn't exist then create it.
+# Use the Cocktail record (your cocktail table, not api) to say user.favorite(cocktail), which will create the favorite record.

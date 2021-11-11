@@ -6,6 +6,6 @@ Rails.application.routes.draw do
       get 'search', 'search_by_ingredient', 'search_by_name'
     end
   end
-  
+  resources :favorites, only: [:create, :destroy]
 
 end
