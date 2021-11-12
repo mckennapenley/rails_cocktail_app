@@ -1,0 +1,3 @@
+<%= form_with(model: current_user.favorites.find_by(api_id: api_id), html: {method: :delete}, local: false) do |f| %>
+  <%= f.submit "Unfavorite", class: "unfavorite-btn btn btn-outline-primary" %>
+<% end %>

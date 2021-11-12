@@ -1,23 +1,61 @@
 class CocktailsController < ApplicationController
-  def index
+  def search
     @cocktail = CocktailService.get_random_cocktail
   end
 
-    def search_by_name
-    @cocktails = CocktailService.get_cocktail_by_name(params["name"])
-    render 'show_search_results'
+  def new
+    render 'new'
   end
 
-  def search_by_liquor
-    @cocktails = CocktailService.get_cocktail_by_liqour(params["liquor"])
-    render 'show_search_results'
+  def create
+    @cocktail = Cocktail.create!(
+      name: params["name"], 
+      image_url: params["image_url"], 
+      measure1: params["measure1"], 
+      ingredient1: params["ingredient1"], 
+      measure2: params["measure2"], 
+      ingredient2: params["ingredient2"],
+      measure3: params["measure3"], 
+      ingredient3: params["ingredient3"],
+      instructions: params["instructions"],
+      user_id: current_user[:id]
+    )
+
+    # what if it fails? raise an error?
+
+    # do a redirect to show path
   end
 
+  def search_by_name
+    query = params[:name]
+
+    if query.present? 
+      @user_sumbitted_cocktails = Cocktail.where("name LIKE ?", "%#{query}%").where.not(user_id:nil)
+      @api_cocktails = CocktailService.get_cocktail_by_name(query)
+      render 'show_search_results'
+    else 
+      redirect_to '/cocktails/search'
+    end
+  end
+
+  def search_by_ingredient
+   if params["ingredient"].present?
+    @api_cocktails = CocktailService.get_cocktail_by_ingredient(params["ingredient"])
+    render 'show_search_results'
+   else
+    redirect_to '/cocktails/search'
+   end
+  end
 
   def show
-    @cocktail = CocktailService.get_cocktail_by_id(params[:id])
-        render 'show'
+    @is_api_cocktail = params[:api_cocktail].present?
+
+    if @is_api_cocktail
+      @cocktail = CocktailService.get_cocktail_by_id(params[:id])
+    else
+      @cocktail = Cocktail.find_by_id(params[:id])
+    end
+    
+    render 'show'
   end
-
-
 end

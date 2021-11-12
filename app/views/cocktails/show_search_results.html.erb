@@ -1,13 +1,63 @@
 
-<h1>Search Results</h1>
 
-<ul >
-  <% @cocktails.each do |cocktail| %>
-    <li>
-    <a href = "<%= cocktail_path(cocktail["idDrink"]) %>">
-    <img src="<%= cocktail["strDrinkThumb"] %>" alt="cocktail image" width= "100" height = "100" >
-    </a>
-    <%= cocktail["strDrink"] %>
-    </li>
-  <% end %>
-</ul>
+</main>
+<div class ="album py-5 bg-light">
+  <h1 class="text-center mb-5"> Search Results </h1>
+  <div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
+    <% if @api_cocktails.present? %>
+      <% @api_cocktails.each do |api_cocktail| %>
+      <div class="col">
+          <div class="card shadow-sm">
+            <img class ="bd-placeholder-img card-img-top" width="100%" height ="100%" src="<%= api_cocktail["strDrinkThumb"] %>" aria-label="Placeholder: Thumbnail">
+            <div class="card-body">
+              <p class="card-text">
+                <%= api_cocktail["strDrink"] %>
+              </p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <input type="button" class="btn btn-sm btn-outline-secondary" onclick= "location.href = '<%= cocktail_path(api_cocktail["idDrink"], api_cocktail: true) %>';" value="View" />
+                </div>
+                 <div id="favorite_form">
+                  <% if current_user.favorited?(api_cocktail["idDrink"]) %>
+                    <%= render 'shared/unfavorite', api_id: api_cocktail["idDrink"], cocktail: api_cocktail %>
+                  <% else %>
+                    <%= render 'shared/favorite', api_id: api_cocktail["idDrink"], cocktail: api_cocktail %>
+                  <% end %>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <% end %>
+      <% end %>
+
+     <% if @user_sumbitted_cocktails.present? %>
+      <h3>User Submitted</h3>
+      <% @user_sumbitted_cocktails.each do |user_submitted_cocktail| %>
+      <div class="col">
+          <div class="card shadow-sm">
+            <img class ="bd-placeholder-img card-img-top" width="100%" height ="100%" src="<%= user_submitted_cocktail[:image_url] %>" aria-label="Placeholder: Thumbnail">
+            <div class="card-body">
+              <p class="card-text">
+                <%= user_submitted_cocktail[:name] %>
+              </p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <input type="button" class="btn btn-sm btn-outline-secondary" onclick= "location.href = '<%= cocktail_path(user_submitted_cocktail[:id]) %>';" value="View" />
+                </div> 
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <% end %>
+    <% end %>
+    </div>
+  </div>
+</div>
+</main>
+
+

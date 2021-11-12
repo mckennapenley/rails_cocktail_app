@@ -10,7 +10,56 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_08_184622) do
+ActiveRecord::Schema.define(version: 2021_11_12_192040) do
+
+  create_table "cocktails", force: :cascade do |t|
+    t.integer "api_id"
+    t.string "image_url"
+    t.string "name"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "measure1"
+    t.string "ingredient1"
+    t.string "measure2"
+    t.string "ingredient2"
+    t.string "measure3"
+    t.string "ingredient3"
+    t.string "measure4"
+    t.string "ingredient4"
+    t.string "measure5"
+    t.string "ingredient5"
+    t.string "measure6"
+    t.string "ingredient6"
+    t.string "measure7"
+    t.string "ingredient7"
+    t.string "measure8"
+    t.string "ingredient8"
+    t.string "measure9"
+    t.string "ingredient9"
+    t.string "measure10"
+    t.string "ingredient10"
+    t.string "measure11"
+    t.string "ingredient11"
+    t.string "measure12"
+    t.string "ingredient12"
+    t.string "measure13"
+    t.string "ingredient13"
+    t.string "measure14"
+    t.string "ingredient14"
+    t.string "measure15"
+    t.string "ingredient15"
+    t.text "instructions"
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "cocktail_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "api_id"
+    t.index ["user_id", "cocktail_id"], name: "index_favorites_on_user_id_and_cocktail_id", unique: true
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
