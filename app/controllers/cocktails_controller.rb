@@ -8,16 +8,30 @@ class CocktailsController < ApplicationController
   end
 
   def create
-    Cocktail.create(name:params["name"], image_url:params["image_url"], 
-    measure1:params["measure1"], ingredient1:params["ingredient1"], 
-    measure2:params["measure2"], ingredient2:params["ingredient2"],
-    measure3:params["measure3"], ingredient3:params["ingredient3"],
-    instructions:params["instructions"])
+    @cocktail = Cocktail.create!(
+      name: params["name"], 
+      image_url: params["image_url"], 
+      measure1: params["measure1"], 
+      ingredient1: params["ingredient1"], 
+      measure2: params["measure2"], 
+      ingredient2: params["ingredient2"],
+      measure3: params["measure3"], 
+      ingredient3: params["ingredient3"],
+      instructions: params["instructions"],
+      user_id: current_user[:id]
+    )
+
+    # what if it fails? raise an error?
+
+    # do a redirect to show path
   end
 
   def search_by_name
-    if !params["name"].empty? 
-      @api_cocktails = CocktailService.get_cocktail_by_name(params["name"])
+    query = params[:name]
+
+    if query.present? 
+      @user_sumbitted_cocktails = Cocktail.where("name LIKE ?", "%#{query}%").where.not(user_id:nil)
+      @api_cocktails = CocktailService.get_cocktail_by_name(query)
       render 'show_search_results'
     else 
       redirect_to '/cocktails/search'
@@ -25,7 +39,7 @@ class CocktailsController < ApplicationController
   end
 
   def search_by_ingredient
-   if !params["ingredient"].empty? 
+   if params["ingredient"].present?
     @api_cocktails = CocktailService.get_cocktail_by_ingredient(params["ingredient"])
     render 'show_search_results'
    else
@@ -34,7 +48,14 @@ class CocktailsController < ApplicationController
   end
 
   def show
-    @cocktail = CocktailService.get_cocktail_by_id(params[:id])
+    @is_api_cocktail = params[:api_cocktail].present?
+
+    if @is_api_cocktail
+      @cocktail = CocktailService.get_cocktail_by_id(params[:id])
+    else
+      @cocktail = Cocktail.find_by_id(params[:id])
+    end
+    
     render 'show'
   end
 end

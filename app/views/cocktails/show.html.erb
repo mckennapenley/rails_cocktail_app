@@ -1,34 +1,98 @@
 <h1><%=@cocktail["strDrink"]%></h1>
- <img src="<%= @cocktail["strDrinkThumb"] %>" alt="cocktail image" width= "300" height = "300" >
+ <img src="<%= @cocktail["strDrinkThumb"] || @cocktail.image_url %>" alt="cocktail image" width= "300" height = "300" >
 
-<%=@cocktail["strInstructions"]%>
-<%=@cocktail["strIngredient1"]%>
-<%=@cocktail["strMeasure1"]%>
-<%=@cocktail["strIngredient2"]%>
-<%=@cocktail["strMeasure2"]%>
-<%=@cocktail["strIngredient3"]%>
-<%=@cocktail["strMeasure3"]%>
-<%=@cocktail["strIngredient4"]%>
-<%=@cocktail["strMeasure4"]%>
-<%=@cocktail["strIngredient5"]%>
-<%=@cocktail["strMeasure5"]%>
-<%=@cocktail["strIngredient6"]%>
-<%=@cocktail["strMeasure6"]%>
-<%=@cocktail["strIngredient7"]%>
-<%=@cocktail["strMeasure7"]%>
-<%=@cocktail["strIngredient8"]%>
-<%=@cocktail["strMeasure8"]%>
-<%=@cocktail["strIngredient9"]%>
-<%=@cocktail["strMeasure9"]%>
-<%=@cocktail["strIngredient10"]%>
-<%=@cocktail["strMeasure10"]%>
-<%=@cocktail["strIngredient11"]%>
-<%=@cocktail["strMeasure11"]%>
-<%=@cocktail["strIngredient12"]%>
-<%=@cocktail["strMeasure12"]%>
-<%=@cocktail["strIngredient13"]%>
-<%=@cocktail["strMeasure13"]%>
-<%=@cocktail["strIngredient14"]%>
-<%=@cocktail["strMeasure14"]%>
-<%=@cocktail["strIngredient15"]%>
-<%=@cocktail["strMeasure15"]%>
+ <% if @is_api_cocktail %>
+    <%= @cocktail["strInstructions"] %>
+
+    <%= @cocktail["strIngredient1"] %>
+    <%= @cocktail["strMeasure1"] %>
+
+    <%= @cocktail["strIngredient2"] %>
+    <%= @cocktail["strMeasure2"] %>
+
+    <%= @cocktail["strIngredient3"] %>
+    <%= @cocktail["strMeasure3"] %>
+
+    <%= @cocktail["strIngredient4"] %>
+    <%= @cocktail["strMeasure4"] %>
+
+    <%= @cocktail["strIngredient5"] %>
+    <%= @cocktail["strMeasure5"] %>
+
+    <%= @cocktail["strIngredient6"] %>
+    <%= @cocktail["strMeasure6"] %>
+
+    <%= @cocktail["strIngredient7"] %>
+    <%= @cocktail["strMeasure7"] %>
+
+    <%= @cocktail["strIngredient8"] %>
+    <%= @cocktail["strMeasure8"] %>
+
+    <%= @cocktail["strIngredient9"] %>
+    <%= @cocktail["strMeasure9"] %>
+
+    <%= @cocktail["strIngredient10"] %>
+    <%= @cocktail["strMeasure10"] %>
+
+    <%= @cocktail["strIngredient11"] %>
+    <%= @cocktail["strMeasure11"] %>
+
+    <%= @cocktail["strIngredient12"] %>
+    <%= @cocktail["strMeasure12"] %>
+
+    <%= @cocktail["strIngredient13"] %>
+    <%= @cocktail["strMeasure13"] %>
+
+    <%= @cocktail["strIngredient14"] %>
+    <%= @cocktail["strMeasure14"] %>
+
+    <%= @cocktail["strIngredient15"] %>
+    <%= @cocktail["strMeasure15"] %>
+  <% else %>
+    <%= @cocktail.instructions%>
+
+    <%= @cocktail.ingredient1%>
+    <%= @cocktail.ingredient1%>
+
+    <%= @cocktail.ingredient2%>
+    <%= @cocktail.measure2 %>
+
+    <%= @cocktail.ingredient3%>
+    <%= @cocktail.measure3 %>
+
+    <%= @cocktail.ingredient4 %>
+    <%= @cocktail.measure4 %>
+
+    <%= @cocktail.ingredient5 %>
+    <%= @cocktail.measure5 %>
+
+    <%= @cocktail.ingredient6 %>
+    <%= @cocktail.measure6 %>
+
+    <%= @cocktail.ingredient7 %>
+    <%= @cocktail.measure7 %>
+
+    <%= @cocktail.ingredient8 %>
+    <%= @cocktail.measure8 %>
+
+    <%= @cocktail.ingredient9 %>
+    <%= @cocktail.measure9 %>
+
+    <%= @cocktail.ingredient10 %>
+    <%= @cocktail.measure10 %>
+
+    <%= @cocktail.ingredient11 %>
+    <%= @cocktail.measure11 %>
+
+    <%= @cocktail.ingredient12 %>
+    <%= @cocktail.measure12 %>
+
+    <%= @cocktail.ingredient13 %>
+    <%= @cocktail.measure13 %>
+
+    <%= @cocktail.ingredient14 %>
+    <%= @cocktail.measure14 %>
+
+    <%= @cocktail.ingredient15 %>
+    <%= @cocktail.measure15 %>
+  <% end %>
