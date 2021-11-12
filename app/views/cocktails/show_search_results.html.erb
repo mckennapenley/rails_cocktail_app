@@ -2,8 +2,9 @@
 
 </main>
 <div class ="album py-5 bg-light">
+  <h1 class="text-center mb-5"> Search Results </h1>
   <div class="container">
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
       <% @cocktails.each do |cocktail| %>
       <div class="col">
           <div class="card shadow-sm">
@@ -16,14 +17,11 @@
                 <div class="btn-group">
                   <input type="button" class="btn btn-sm btn-outline-secondary" onclick= "location.href = '<%= cocktail_path(cocktail["idDrink"]) %>';" value="View" />
                 </div>
-                <button type="button" class="btn">
-                  <i class="bi bi-star"></i>
-                </button>
                  <div id="favorite_form">
                   <% if current_user.favorited?(cocktail["idDrink"]) %>
-                    <%= render 'unfavorite', cocktail: cocktail %>
+                    <%= render 'shared/unfavorite', cocktail: cocktail %>
                   <% else %>
-                    <%= render 'favorite', cocktail: cocktail %>
+                    <%= render 'shared/favorite', cocktail: cocktail %>
                   <% end %>
                 </div>
 

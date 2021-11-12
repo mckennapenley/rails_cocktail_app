@@ -3,6 +3,14 @@ class CocktailsController < ApplicationController
     @cocktail = CocktailService.get_random_cocktail
   end
 
+  def new
+    render 'new'
+  end
+
+  def create
+    Cocktail.create(name:params[:name], image_url:params[:image_url])
+  end
+
   def search_by_name
     if !params["name"].empty? 
       @cocktails = CocktailService.get_cocktail_by_name(params["name"])
