@@ -5,7 +5,7 @@
   <h1 class="text-center mb-5"> Search Results </h1>
   <div class="container">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
-      <% @cocktails.each do |cocktail| %>
+      <% @api_cocktails.each do |cocktail| %>
       <div class="col">
           <div class="card shadow-sm">
             <img class ="bd-placeholder-img card-img-top" width="100%" height ="100%" src="<%= cocktail["strDrinkThumb"] %>" aria-label="Placeholder: Thumbnail">
@@ -19,9 +19,9 @@
                 </div>
                  <div id="favorite_form">
                   <% if current_user.favorited?(cocktail["idDrink"]) %>
-                    <%= render 'shared/unfavorite', cocktail: cocktail %>
+                    <%= render 'shared/unfavorite', api_id: cocktail["idDrink"], cocktail: cocktail %>
                   <% else %>
-                    <%= render 'shared/favorite', cocktail: cocktail %>
+                    <%= render 'shared/favorite', api_id: cocktail["idDrink"], cocktail: cocktail %>
                   <% end %>
                 </div>
 

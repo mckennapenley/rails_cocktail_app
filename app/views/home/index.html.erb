@@ -26,12 +26,7 @@
                 <div class="btn-group">
                   <input type="button" class="btn btn-sm btn-outline-secondary" onclick= "location.href = '<%= cocktail_path(favorited_cocktail[:api_id]) %>';" value="View" />
                 </div>
-                 <div id="favorite_form">
-                  <% if current_user.favorited?(favorited_cocktail[:api_id]) %>
-                    <%= render 'shared/unfavorite', cocktail: favorited_cocktail %>
-                  <% else %>
-                    <%= render 'shared/favorite', cocktail: favorited_cocktail %>
-                  <% end %>
+                    <%= render 'shared/unfavorite', api_id: favorited_cocktail[:api_id] %>
                 </div>
 
               </div>
