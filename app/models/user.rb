@@ -26,8 +26,12 @@ class User < ApplicationRecord
   # end
 
 # Returns true if the current user is following the other user.
-  def favorited?(cocktail_api_id)
+  def favorited_api_cocktail?(cocktail_api_id)
     favorited_cocktails.find_by(api_id: cocktail_api_id).present?
+  end
+
+  def favorited?(cocktail_id)
+    favorited_cocktails.find_by(id: cocktail_id).present?
   end
 end
 

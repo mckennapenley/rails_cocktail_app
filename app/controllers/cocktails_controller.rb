@@ -8,7 +8,7 @@ class CocktailsController < ApplicationController
   end
 
   def create
-    @cocktail = Cocktail.create!(
+    cocktail = Cocktail.create!(
       name: params["name"], 
       image_url: params["image_url"], 
       measure1: params["measure1"], 
@@ -18,12 +18,10 @@ class CocktailsController < ApplicationController
       measure3: params["measure3"], 
       ingredient3: params["ingredient3"],
       instructions: params["instructions"],
-      user_id: current_user[:id]
+      user_id: current_user.id
     )
 
-    # what if it fails? raise an error?
-
-    # do a redirect to show path
+    redirect_to cocktail_path(cocktail.id)
   end
 
   def search_by_name
@@ -32,6 +30,7 @@ class CocktailsController < ApplicationController
     if query.present? 
       @user_sumbitted_cocktails = Cocktail.where("name LIKE ?", "%#{query}%").where.not(user_id:nil)
       @api_cocktails = CocktailService.get_cocktail_by_name(query)
+      
       render 'show_search_results'
     else 
       redirect_to '/cocktails/search'
@@ -39,12 +38,16 @@ class CocktailsController < ApplicationController
   end
 
   def search_by_ingredient
-   if params["ingredient"].present?
-    @api_cocktails = CocktailService.get_cocktail_by_ingredient(params["ingredient"])
-    render 'show_search_results'
-   else
-    redirect_to '/cocktails/search'
-   end
+    query = params[:ingredient]
+
+    if query.present? 
+      @user_sumbitted_cocktails = Cocktail.where("ingredient1 LIKE :search OR ingredient2 LIKE :search OR ingredient3 LIKE :search",  :search => "%#{query}%").where.not(user_id:nil)
+      @api_cocktails = CocktailService.get_cocktail_by_ingredient(query)
+      
+      render 'show_search_results'
+    else
+      redirect_to '/cocktails/search'
+    end
   end
 
   def show

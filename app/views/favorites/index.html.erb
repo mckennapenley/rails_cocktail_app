@@ -7,18 +7,18 @@
          <%  @favorited_cocktails.each do |favorited_cocktail| %>
       <div class="col">
           <div class="card shadow-sm">
-            <img class ="bd-placeholder-img card-img-top" width="100%" height ="100%" src="<%= favorited_cocktail[:image_url] %>" aria-label="Placeholder: Thumbnail">
+            <img class ="bd-placeholder-img card-img-top" width="100%" height ="100%" src="<%= favorited_cocktail.image_url] %>" aria-label="Placeholder: Thumbnail">
             <div class="card-body">
               <p class="card-text">
-                <%= favorited_cocktail[:name] %>
+                <%= favorited_cocktail.name %>
               </p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <input type="button" class="btn btn-sm btn-outline-secondary" onclick= "location.href = '<%= cocktail_path(favorited_cocktail[:api_id]) %>';" value="View" />
+                  <input type="button" class="btn btn-sm btn-outline-secondary" onclick= "location.href = '<%= cocktail_path(favorited_cocktail.api_id) %>';" value="View" />
                 </div>
                  <div id="favorite_form">
-                  <% if current_user.favorited?(favorited_cocktail[:api_id]) %>
-                    <%= render 'shared/unfavorite', api_id: favorited_cocktail[:api_id] %>
+                  <% if current_user.favorited?(favorited_cocktail.id) %>
+                    <%= render 'shared/unfavorite', api_id: favorited_cocktail.api_id %>
                   <% else %>
                     <%= render 'shared/favorite', cocktail: favorited_cocktail %>
                   <% end %>

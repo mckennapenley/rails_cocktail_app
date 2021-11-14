@@ -1,0 +1,4 @@
+<%= form_with(model: current_user.favorites.build, local: false) do |f| %>
+  <div><%= hidden_field_tag :cocktail_id, cocktail.id %></div>
+  <%= f.submit "Favorite", class: " favorite-btn btn btn-primary" %>
+<% end %>
