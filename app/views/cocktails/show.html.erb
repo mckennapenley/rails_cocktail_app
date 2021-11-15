@@ -48,6 +48,17 @@
 
     <%= @cocktail["strIngredient15"] %>
     <%= @cocktail["strMeasure15"] %>
+
+    <% if current_user.present? %>
+      <div id="favorite_form">
+        <% if current_user.favorited_api_cocktail?(@cocktail["idDrink"]) %>
+          <%= render 'shared/unfavorite' , api_id: @cocktail["idDrink"], cocktail: @cocktail %>
+        <% else %>
+          <%= render 'shared/favorite' , api_id: @cocktail["idDrink"], cocktail: @cocktail %>
+        <% end %>
+      </div>
+    <% end %>
+
   <% else %>
     <%= @cocktail.instructions%>
 
@@ -95,4 +106,17 @@
 
     <%= @cocktail.ingredient15 %>
     <%= @cocktail.measure15 %>
+
+    <% if current_user.present? %>
+      <div id="favorite_form">
+        <% if current_user.favorited?(@cocktail.id) %>
+          <%= render 'shared/unfavorite_user_submitted' , cocktail: @cocktail %>
+        <% else %>
+          <%= render 'shared/favorite_user_submitted' , cocktail: @cocktail %>
+        <% end %>
+      </div>
+    <% end %>
   <% end %>
+
+ 
+    

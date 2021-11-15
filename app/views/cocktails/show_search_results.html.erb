@@ -19,6 +19,7 @@
                       onclick="location.href = '<%= cocktail_path(api_cocktail["idDrink"], api_cocktail: true) %>';"
                     value="View" />
                   </div>
+                <% if current_user.present? %>
                   <div id="favorite_form">
                     <% if current_user.favorited_api_cocktail?(api_cocktail["idDrink"]) %>
                       <%= render 'shared/unfavorite' , api_id: api_cocktail["idDrink"], cocktail: api_cocktail %>
@@ -26,6 +27,7 @@
                       <%= render 'shared/favorite' , api_id: api_cocktail["idDrink"], cocktail: api_cocktail %>
                     <% end %>
                   </div>
+                <% end %>
                 </div>
               </div>
             </div>
@@ -56,6 +58,7 @@
                       onclick="location.href = '<%= cocktail_path(user_submitted_cocktail.id) %>';"
                       value="View" />
                   </div>
+                 <% if current_user.present? %>
                   <div id="favorite_form">
                     <% if current_user.favorited?(user_submitted_cocktail.id) %>
                       <%= render 'shared/unfavorite_user_submitted' , cocktail: user_submitted_cocktail %>
@@ -63,6 +66,7 @@
                       <%= render 'shared/favorite_user_submitted' , cocktail: user_submitted_cocktail %>
                     <% end %>
                   </div>
+                <% end %>
                 </div>
               </div>
             </div>
