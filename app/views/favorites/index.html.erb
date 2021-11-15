@@ -1,40 +1,39 @@
-
 </main>
-<div class ="album py-5 bg-light">
-  <h1 class="text-center mb-5"> Your Favorites </h1>
-  <div class="container">
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
-         <%  @favorited_cocktails.each do |favorited_cocktail| %>
-      <div class="col">
-          <div class="card shadow-sm">
-            <img class ="bd-placeholder-img card-img-top" width="300px" height ="300px" src="<%= favorited_cocktail.image_url %>" aria-label="Placeholder: Thumbnail">
-            <div class="card-body">
-              <p class="card-text">
-                <%= favorited_cocktail.name %>
-              </p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <% if favorited_cocktail.api_id.present? %>
-                    <input type="button" class="btn btn-sm btn-outline-secondary" onclick= "location.href = '<%= cocktail_path(favorited_cocktail.api_id, api_cocktail: true ) %>';" value="View" />
-                 <% else %>
-                    <input type="button" class="btn btn-sm btn-outline-secondary" onclick= "location.href = '<%= cocktail_path(favorited_cocktail.id) %>';" value="View" />
-                  <% end %>
-                </div>
-                 <div id="favorite_form">
-                  <% if current_user.favorited?(favorited_cocktail.id) %>
-                    <%= render 'shared/unfavorite', api_id: favorited_cocktail.api_id %>
+  <div class ="album py-5 bg-light">
+    <h1 class="text-center mb-5"> Your Favorites </h1>
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
+          <%  @favorited_cocktails.each do |favorited_cocktail| %>
+        <div class="col">
+            <div class="card shadow-sm">
+              <img class ="bd-placeholder-img card-img-top" width="300px" height ="300px" src="<%= favorited_cocktail.image_url %>" aria-label="Placeholder: Thumbnail">
+              <div class="card-body">
+                <p class="card-text">
+                  <%= favorited_cocktail.name %>
+                </p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <% if favorited_cocktail.api_id.present? %>
+                      <input type="button" class="btn btn-sm btn-outline-secondary" onclick= "location.href = '<%= cocktail_path(favorited_cocktail.api_id, api_cocktail: true ) %>';" value="View" />
                   <% else %>
-                    <%= render 'shared/favorite', cocktail: favorited_cocktail %>
-                  <% end %>
-                </div>
+                      <input type="button" class="btn btn-sm btn-outline-secondary" onclick= "location.href = '<%= cocktail_path(favorited_cocktail.id) %>';" value="View" />
+                    <% end %>
+                  </div>
+                  <div id="favorite_form">
+                    <% if current_user.favorited?(favorited_cocktail.id) %>
+                      <%= render 'shared/unfavorite', api_id: favorited_cocktail.api_id %>
+                    <% else %>
+                      <%= render 'shared/favorite', cocktail: favorited_cocktail %>
+                    <% end %>
+                  </div>
 
+                </div>
               </div>
             </div>
-          </div>
 
-        </div>
-        <% end %>
+          </div>
+          <% end %>
+      </div>
     </div>
   </div>
-</div>
 </main>
