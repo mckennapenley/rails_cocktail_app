@@ -2,9 +2,9 @@ class FavoritesController < ApplicationController
 
   def index
     if current_user
-     @favorited_cocktails = current_user.favorited_cocktails 
+      @favorited_cocktails = current_user.favorited_cocktails 
     else 
-     render "sessions/new"
+      render "sessions/new"
     end
   end
 
