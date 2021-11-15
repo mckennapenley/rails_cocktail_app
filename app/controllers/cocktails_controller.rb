@@ -25,10 +25,10 @@ class CocktailsController < ApplicationController
   end
 
   def search_by_name
-    query = params[:name]
+    query = params[:name].downcase
 
     if query.present? 
-      @user_sumbitted_cocktails = Cocktail.where("name LIKE ?", "%#{query}%").where.not(user_id:nil)
+      @user_sumbitted_cocktails = Cocktail.where("lower(name) LIKE ?", "%#{query}%").where.not(user_id:nil)
       @api_cocktails = CocktailService.get_cocktail_by_name(query)
       
       render 'show_search_results'
@@ -41,7 +41,7 @@ class CocktailsController < ApplicationController
     query = params[:ingredient]
 
     if query.present? 
-      @user_sumbitted_cocktails = Cocktail.where("ingredient1 LIKE :search OR ingredient2 LIKE :search OR ingredient3 LIKE :search",  :search => "%#{query}%").where.not(user_id:nil)
+      @user_sumbitted_cocktails = Cocktail.where("lower(ingredient1) LIKE :search OR lower(ingredient2) LIKE :search OR lower(ingredient3) LIKE :search",  :search => "%#{query}%").where.not(user_id:nil)
       @api_cocktails = CocktailService.get_cocktail_by_ingredient(query)
       
       render 'show_search_results'
