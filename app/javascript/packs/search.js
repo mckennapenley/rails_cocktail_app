@@ -1,5 +1,5 @@
 document.addEventListener("turbolinks:load", function () {
-  $("#search_by_name_btn").on("click", function (e) {
+  $("#search_by_name_btn").on("click", function () {
     $("#search_form").attr("action", "/cocktails/search_by_name");
     $("#search_by_name_btn")
       .removeClass("btn-outline-primary")
@@ -11,7 +11,7 @@ document.addEventListener("turbolinks:load", function () {
     $("#search_input").attr("name", "name");
   });
 
-  $("#search_by_ingredient_btn").on("click", function (e) {
+  $("#search_by_ingredient_btn").on("click", function () {
     $("#search_form").attr("action", "/cocktails/search_by_ingredient");
     $("#search_by_name_btn")
       .removeClass("btn-primary")

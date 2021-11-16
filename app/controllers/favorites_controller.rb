@@ -12,14 +12,21 @@ class FavoritesController < ApplicationController
     cocktail = api_cocktail? ? find_or_create_api_cocktail : find_user_submitted_cocktail
       
     current_user.add_favorite(cocktail)
-    render status: 200
+    
+    respond_to do |format|
+      format.js
+      format.html
+    end
   end
 
   def destroy
     cocktail = Favorite.find_by(id: params[:id])
     cocktail.delete
 
-    render status: 200
+    respond_to do |format|
+      format.js
+      format.html
+    end
   end
 
   private
