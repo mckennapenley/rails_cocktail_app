@@ -21,9 +21,9 @@
                   </div>
                   <div id="favorite_form">
                     <% if current_user.favorited?(favorited_cocktail.id) %>
-                      <%= render 'shared/unfavorite', api_id: favorited_cocktail.api_id %>
+                      <%= render 'shared/unfavorite_api', api_id: favorited_cocktail.api_id %>
                     <% else %>
-                      <%= render 'shared/favorite', cocktail: favorited_cocktail %>
+                      <%= render 'shared/favorite_api', cocktail: favorited_cocktail %>
                     <% end %>
                   </div>
 

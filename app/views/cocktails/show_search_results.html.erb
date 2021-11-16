@@ -22,9 +22,9 @@
                 <% if current_user.present? %>
                   <div id="favorite_form">
                     <% if current_user.favorited_api_cocktail?(api_cocktail["idDrink"]) %>
-                      <%= render 'shared/unfavorite' , api_id: api_cocktail["idDrink"], cocktail: api_cocktail %>
+                      <%= render 'shared/unfavorite_api' , api_id: api_cocktail["idDrink"], cocktail: api_cocktail %>
                     <% else %>
-                      <%= render 'shared/favorite' , api_id: api_cocktail["idDrink"], cocktail: api_cocktail %>
+                      <%= render 'shared/favorite_api' , api_id: api_cocktail["idDrink"], cocktail: api_cocktail %>
                     <% end %>
                   </div>
                 <% end %>

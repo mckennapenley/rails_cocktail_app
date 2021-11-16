@@ -32,7 +32,7 @@
                     <input type="button" class="btn btn-sm btn-outline-secondary" onclick= "location.href = '<%= cocktail_path(favorited_cocktail.id) %>';" value="View" />
                   <% end %>
                 </div>
-                <%= render 'shared/unfavorite', api_id: favorited_cocktail.api_id %>
+                <%= render 'shared/unfavorite_api', api_id: favorited_cocktail.api_id %>
               </div>
             </div>
           </div>
