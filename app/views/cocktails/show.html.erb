@@ -1,8 +1,8 @@
 <h1 class="cocktail-name text-center"><%=@cocktail["strDrink"] || @cocktail.name%></h1>
 <hr class="my-4">
 
-<div class="d-flex flex-row">
-  <div class="col-md-6 text-center" >
+<div class="row">
+  <div class="col-sm-6 text-center" >
     <img src="<%= @cocktail["strDrinkThumb"] || @cocktail.image_url %>" alt="cocktail image" width= "300" height = "300" >
 
     <% if @is_api_cocktail %>
@@ -29,7 +29,7 @@
 
   </div>
 
-  <div class="col-med-6">
+  <div class="col-sm-6 recipe-text">
     <% if @is_api_cocktail %>
       <%= render 'shared/api_cocktail_recipe' %>
     <% else %>

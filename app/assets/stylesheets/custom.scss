@@ -42,3 +42,10 @@ body {
 .cocktail-name {
   margin-top: 20px;
 }
+
+@media only screen and (max-width: 560px) {
+  .recipe-text {
+    text-align: center;
+    margin-top: 20px;
+  }
+}
