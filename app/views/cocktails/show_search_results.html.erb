@@ -1,6 +1,5 @@
 </main>
-<div class="album py-5 bg-light">
-  <h1 class="text-center mb-5"> Search Results </h1>
+  <h1 class="text-center mb-5 pt-3"> Search Results </h1>
 
   <% if @api_cocktails.present? %>
     <div class="container">
@@ -13,21 +12,21 @@
                 <p class="card-text">
                   <%= api_cocktail["strDrink"] %>
                 </p>
-                <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex justify-content-between    align-items-center">
                   <div class="btn-group">
                     <input type="button" class="btn btn-sm btn-outline-secondary"
                       onclick="location.href = '<%= cocktail_path(api_cocktail["idDrink"], api_cocktail: true) %>';"
                     value="View" />
                   </div>
-                <% if current_user.present? %>
-                  <div id="favorite_form">
-                    <% if current_user.favorited_api_cocktail?(api_cocktail["idDrink"]) %>
-                      <%= render 'shared/unfavorite_api' , api_id: api_cocktail["idDrink"], cocktail: api_cocktail %>
-                    <% else %>
-                      <%= render 'shared/favorite_api' , api_id: api_cocktail["idDrink"], cocktail: api_cocktail %>
-                    <% end %>
-                  </div>
-                <% end %>
+                  <% if current_user.present? %>
+                    <div id="favorite_form">
+                      <% if current_user.favorited_api_cocktail?(api_cocktail["idDrink"]) %>
+                        <%= render 'shared/unfavorite_api' , api_id: api_cocktail["idDrink"], cocktail: api_cocktail %>
+                      <% else %>
+                        <%= render 'shared/favorite_api' , api_id: api_cocktail["idDrink"], cocktail: api_cocktail %>
+                      <% end %>
+                    </div>
+                  <% end %>
                 </div>
               </div>
             </div>
@@ -66,7 +65,7 @@
                       <%= render 'shared/favorite_user_submitted' , cocktail: user_submitted_cocktail %>
                     <% end %>
                   </div>
-                <% end %>
+                  <% end %>
                 </div>
               </div>
             </div>
@@ -75,5 +74,4 @@
       </div>
     </div>
   <% end %>
-
-  </main>
+</main>
