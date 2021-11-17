@@ -16,27 +16,34 @@ See the [deployed app](https://cocktailfindr.herokuapp.com/)
 ## Screenshots
 
 ![Homepage Desktop](app/assets/images/home_view_desktop.png)
-![Homepage Mobile](app/assets/images/home_view_mobile.png)
-<br>
-<br>
-<br>
+
+<p align="center">
+<img src="app/assets/images/home_view_mobile.png"  height="500">
+</p>
+
 ![Search Desktop](app/assets/images/search_view_desktop.png)
-![Homepage Mobile](app/assets/images/search_view_mobile.png)
-<br>
-<br>
-<br>
+
+<p align="center">
+<img src="app/assets/images/search_view_mobile.png"  height="500">
+</p>
+
 ![Search Results Desktop](app/assets/images/search_results_view_desktop.png)
-![Homepage Mobile](app/assets/images/search_results_view_mobile.png)
-<br>
-<br>
-<br>
+
+<p align="center">
+<img src="app/assets/images/search_results_view_mobile.png"  height="500">
+</p>
+
 ![Recipe Desktop](app/assets/images/cocktail_recipe_view_desktop.png)
-![Recipe Mobile](app/assets/images/cocktail_recipe_view_mobile.png)
-<br>
-<br>
-<br>
+
+<p align="center">
+<img src="app/assets/images/cocktail_recipe_view_mobile.png"  height="500">
+</p>
+
 ![Recipe Submit Desktop](app/assets/images/submit_recipe_view_desktop.png)
-![Recipe Submit Mobile](app/assets/images/submit_recipe_view_mobile.png)
+
+<p align="center">
+<img src="app/assets/images/submit_recipe_view_mobile.png"  height="500">
+</p>
 
 ## Getting started
 
