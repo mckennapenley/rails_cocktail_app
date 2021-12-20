@@ -45,28 +45,6 @@ See the [deployed app](https://cocktailfindr.herokuapp.com/)
 <img src="app/assets/images/submit_recipe_view_mobile.png"  height="500">
 </p>
 
-## Getting started
-
-To get started with the app, clone the repo and then install the needed gems:
-
-```
-$ gem install bundler -v 2.2.17
-$ bundle _2.2.17_ config set --local without 'production'
-$ bundle _2.2.17_ install
-```
-
-Next, migrate the database:
-
-```
-$ rails db:migrate
-```
-
-Run the app in a local server:
-
-```
-$ rails server
-```
-
 ## Future Enhancements:
 
 - Create additional ingredient inputs for user recipe submission
