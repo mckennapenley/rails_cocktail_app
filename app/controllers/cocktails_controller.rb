@@ -56,7 +56,7 @@ class CocktailsController < ApplicationController
     if @is_api_cocktail
       @cocktail = CocktailService.get_cocktail_by_id(params[:id])
     else
-      @cocktail = Cocktail.find_by_id(params[:id])
+      @cocktail = Cocktail.find(params[:id])
     end
     
     render 'show'
