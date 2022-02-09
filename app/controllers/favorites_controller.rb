@@ -20,8 +20,8 @@ class FavoritesController < ApplicationController
   end
 
   def destroy
-    cocktail = Favorite.find_by(id: params[:id])
-    cocktail.delete
+    favorite = Favorite.find(params[:id])
+    favorite.delete
 
     respond_to do |format|
       format.js
